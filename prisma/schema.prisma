@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  HUESOS_CARNOSOS
+  CARNE
+  VISCERAS
+  VEGETALES
+  COMPLEMENTOS
+}
+
+enum Subcategory {
+  MAGRA
+  SEMIGRASA
+  FIBROSOS
+  ALMIDONADOS
+}
+
+enum VegetableType {
+  HOJAS_VERDES
+  CRUCIFEROS
+  FRUTA
+}
+
+model IngredientBase {
+  id             String        @id @default(cuid())
+  name           String
+  category       Category
+  subcategory    Subcategory?     
+  vegetableType  VegetableType?   
+  createdAt      DateTime      @default(now())
+}
+
+model Stock {
+  id             String        @id @default(cuid())
+  name           String
+  category       Category
+  subcategory    Subcategory?
+  vegetableType  VegetableType?
+  quantity       Float
+  unit           String?
+  dateAdded      DateTime      @default(now())
+}
