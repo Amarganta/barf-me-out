@@ -86,7 +86,7 @@ export default function SeleccionPage() {
 
                   return (
                     <>
-                      {/* Ingredientes sin tipo */}
+
                       {noType && (
                         <Box key="NO_TYPE" ml={2}>
                           <Stack spacing={0.5}>
@@ -102,7 +102,6 @@ export default function SeleccionPage() {
                         </Box>
                       )}
 
-                      {/* Ingredientes clasificados por tipo */}
                       {typed.map(([vegType, list]) => (
                         <Box key={vegType} ml={2}>
                           <Typography level="body-sm" fontWeight="lg" mb={0.5}>
